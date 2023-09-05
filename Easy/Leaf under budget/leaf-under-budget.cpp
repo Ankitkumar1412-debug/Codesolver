@@ -133,8 +133,10 @@ public:
              
                 res++;
                 sum += lvl;
-                if(sum==k)return res;
-                if(sum>k)return res-1; 
+                if(sum==k)
+                return res;
+                if(sum>k)
+                return res-1; 
             }
             if(temp->left)q.push({temp->left,lvl+1});
             if(temp->right)q.push({temp->right,lvl+1});
