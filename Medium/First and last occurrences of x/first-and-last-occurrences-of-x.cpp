@@ -9,7 +9,7 @@ class Solution
     vector<int> find(int arr[], int n , int x )
     {
         // code here
-        vector<int> vec;
+        /*vector<int> vec;
         for(int i=0;i<n;i++){
             if(arr[i]==x){
                 vec.push_back(i);
@@ -22,7 +22,45 @@ class Solution
                 return vec;
             }
         }
-        return{-1,-1};
+        return{-1,-1};*/
+        vector<int> vec;
+        int i = 0,j = n-1;
+        int maxIndex = -1, minIndex = -1;
+        
+        while(i <= j) {
+            int mid = (i+j) / 2;
+            
+            if(arr[mid] > x) {
+                j = mid-1;
+            } else {
+                if(arr[mid] == x) {
+                    maxIndex = mid;
+                }
+                i = mid+1;
+            }
+        }
+        i = 0; j = n-1;
+        while(i <= j) {
+            int mid = (i+j) / 2;
+            
+            if(arr[mid] < x) {
+                i = mid+1;
+            } else {
+                if(arr[mid] == x){
+                minIndex = mid;
+                }
+                j = mid-1;
+            }
+        }
+        if(maxIndex == -1 || minIndex == -1) {
+            vec.push_back(-1);
+            vec.push_back(-1);
+        } else {
+            vec.push_back(minIndex);
+            vec.push_back(maxIndex);
+        }
+        
+        return vec;
     }
 };
 
